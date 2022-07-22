@@ -1,7 +1,4 @@
 <?php
     $numero = 10;
-
-
-    echo $numero;
-
+    echo 'minha idade ',  $numero;
 ?>
