@@ -1,4 +1,7 @@
 <?php
+
+require_once 'funcoes.php';
+
     $conta1 = [
         'titular' => 'eu',
         'salario' => 10000
@@ -13,11 +16,6 @@
     ];
 
     $contasCorrentes = [$conta1, $conta2, $conta3];
-
-    function sacar($valor, $conta) {
-        $conta['salario'] = $conta['salario'] - $valor;
-        return $conta;
-    }
 
     $conta1 = sacar(500, $conta1);
 
