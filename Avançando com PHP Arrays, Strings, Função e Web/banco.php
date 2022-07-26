@@ -21,4 +21,18 @@ require_once 'funcoes.php';
 
     echo $conta1['salario'];
 
+    function toLetraMaiscula(&$conta){
+        ['titular' => $titular, 'salario' => $salario] = $conta;
+        $conta['titular'] = mb_strtoupper($conta['titular']);
+        echo "$titular $salario";
+    }
+
+    unset($contasCorrentes[0]);
+
+    echo PHP_EOL . $contasCorrentes[0] .PHP_EOL;
+
+    toLetraMaiscula($conta2);
+
+    echo $conta2['titular'];
+
 ?>
