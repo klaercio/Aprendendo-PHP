@@ -29,10 +29,9 @@ require_once 'funcoes.php';
 
     unset($contasCorrentes[0]);
 
-    echo PHP_EOL . $contasCorrentes[0] .PHP_EOL;
-
     toLetraMaiscula($conta2);
 
     echo $conta2['titular'];
+
 
 ?>
