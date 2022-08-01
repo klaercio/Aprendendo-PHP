@@ -1,22 +1,28 @@
 <?php
 
-    class Conta {
-        private string $cpfTitular;
-        private string $nomeTitular;
-        private float $saldo;
+    namespace Modelo;
 
-        public function __construct(string $cpfTitular, string $nomeTitular){
-            $this->cpfTitular = $cpfTitular;
-            $this->validaNomeTitular($nomeTitular);
+    class Conta{
+        private $titular;
+        private float $saldo;
+        private static int $numeroDeContas = 0;
+
+        public function __construct(Titular $titular) {
+            $this->titular = $titular;
             $this->saldo = 0;
+            self::$numeroDeContas++;
         }
         
-        public function getCpfTitular(): string {
-            return $this->cpfTitular;
+        public function __destruct() {
+            self::$numeroDeContas--;
         }
-        
+
         public function getNomeTitular(): string {
-            return $this->nomeTitular;
+            return $this->titular->getNome();
+        }
+
+        public function getCpfTitular(): string {
+            return $this->titular->getCpf();
         }
 
         public function getSaldo(): float {
@@ -54,12 +60,8 @@
             echo "valor transferido com sucesso" .PHP_EOL;
         }
 
-        private function validaNomeTitular(string $nomeTitular): void {
-            if(strlen($nomeTitular) < 5) {
-                echo "O nome tem que ter no mínimo 5 caracteres";
-                exit();
-            } 
-            $this->nomeTitular = $nomeTitular;
+        public static function getNumeroDeContas(): int {
+            return self::$numeroDeContas;
         }
 
     }
