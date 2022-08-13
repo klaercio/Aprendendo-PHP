@@ -1,6 +1,7 @@
 <?php
 
-    namespace Modelo;
+    namespace Alura\Banco\Modelo\Conta;
+    use Alura\Banco\Modelo\{Pessoa, Endereco};
 
     class Titular extends Pessoa{
         private Endereco $endereco;

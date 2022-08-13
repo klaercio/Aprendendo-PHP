@@ -1,11 +1,20 @@
 <?php
 
-    require_once './Pessoa.php';
-    require_once './Conta.php';
-    require_once './Modelo/Endereco.php';
-    require_once './Titular.php';
+    spl_autoload_register(function (string $nomeCompletodaClasse) {
+        $caminhoArquivo = str_replace('Alura\\Banco', '.', $nomeCompletodaClasse);
+        $caminhoArquivo = str_replace('\\', DIRECTORY_SEPARATOR, $caminhoArquivo) . '.php';
+        echo $caminhoArquivo;
 
-    $endereco = new endereco('Sao paulo', 'zona norte', 'rua das laranjeiras', '523');
+        if (file_exists($caminhoArquivo)) {
+            require_once $caminhoArquivo;
+        }
+    });
+
+    
+    use Alura\Banco\Modelo\Conta\{Conta, Titular};
+    use Alura\Banco\Modelo\Endereco;
+    
+    $endereco = new Endereco('Sao paulo', 'zona norte', 'rua das laranjeiras', '523');
 
     $conta = new Conta(new Titular("123.456.354-10", "João", $endereco));
 

@@ -1,8 +1,8 @@
 <?php
 
-    namespace Modelo;
+    namespace Alura\Banco\Modelo;
 
-    class endereco {
+    class Endereco {
         private string $cidade;
         private string $bairro;
         private string $rua;
