@@ -4,8 +4,9 @@
     
     use Alura\Banco\Modelo\Conta\{Conta, ContaCorrente, ContaPoupanca, Titular};
     use Alura\Banco\Modelo\Endereco;
-    use Alura\Banco\Modelo\Funcionario\Funcionario;
+    use Alura\Banco\Modelo\Funcionario\{Diretor, Gerente};
     use Alura\Banco\Service\ControladorBonificacoes;
+    use Alura\Banco\Service\Autenticador;
 
     $endereco = new Endereco('Sao paulo', 'zona norte', 'rua das laranjeiras', '523');
 
@@ -23,8 +24,8 @@
     $conta3->sacar(300);
     $conta3->transferir($conta2, 5);
 
-    $funcionario1 = new Funcionario('joaozim', '123.445.788-19', 'analista', 3000);
-    $funcionario2 = new Funcionario('maria', '133.435.758-19', 'chefe de operações', 5000);
+    $funcionario1 = new Gerente('joaozim', '123.445.788-19', 3000);
+    $funcionario2 = new Diretor ('maria', '133.435.758-19', 5000);
 
     $bonificacao = new ControladorBonificacoes;
     $bonificacao->adicionaBonificacao($funcionario1);
@@ -35,5 +36,9 @@
     echo PHP_EOL . $conta2->getSaldo() .PHP_EOL;
     echo $conta->getSaldo() .PHP_EOL;
     echo Conta::getNumeroDeContas() . " Contas" .PHP_EOL;
+
+    $autentica = new Autenticador();
+    $diretor1 = new Diretor("joaozim", '123.456.223-19', 5000);
+    $autentica->tentaLogina($diretor1, '1234');
 
 ?>

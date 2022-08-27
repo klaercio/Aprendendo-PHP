@@ -7,8 +7,6 @@
         public function calculaBonificacao(): float{
             return $this->getSalario();
         }
-
-
     }
 
 ?>
